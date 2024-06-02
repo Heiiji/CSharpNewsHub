@@ -1,0 +1,70 @@
+# Fichiers de configuration de l'utilisateur
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+appsettings.json
+
+# Dossiers de build
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Dossier de cache/options de Jetbrain
+.idea/
+
+# Dossier de cache/options de Visual Studio
+.vs/
+
+# Résultats des tests MSTest
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Fichiers de couverture de code Visual Studio
+*.coverage
+*.coveragexml
+
+# Fichiers de profilage de Visual Studio
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Fichiers de cache de Visual Studio
+# Les fichiers se terminant par .cache peuvent être ignorés
+*.cache
+
+# Dossier Click-Once
+publish/
+
+# Sortie de publication Web
+*.publish.xml
+*.azurePubxml
+*.pubxml
+*.publishproj
+
+# Paquets NuGet
+*.nupkg
+# Le dossier packages peut être ignoré en raison de la restauration de paquets
+**/packages/*
+# sauf build/, qui est utilisé comme cible MSBuild.
+!**/packages/build/
+# Décommentez si nécessaire, cependant, il sera généralement régénéré lorsque nécessaire
+#!**/packages/repositories.config
+# Fichiers project.json de NuGet v3 produisant plus de fichiers ignorables
+*.nuget.props
+*.nuget.targets
+
+# Fichiers de cache spécifiques à Windows comme Thumbs.db et Desktop.ini
+Thumbs.db
+Desktop.ini
+
+# Fichiers et dossiers spécifiques à l'IDE ou au système d'exploitation
+[Tt]humbs.db
+*.DS_Store
