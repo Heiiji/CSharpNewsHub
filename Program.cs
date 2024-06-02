@@ -34,7 +34,7 @@ builder.Services.AddQuartz(q => {
     q.AddTrigger(opts => opts
         .ForJob(jobKey) // Lier à la description du job
         .WithIdentity("CrawlTrigger", "MyGroup")
-        .WithCronSchedule("0/10 * * ? * * *") // Excecute toute les heures
+        .WithCronSchedule("0 * * * *") // Excecute toute les heures
     );
 });
 

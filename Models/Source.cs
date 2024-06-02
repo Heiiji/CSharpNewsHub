@@ -18,5 +18,5 @@ public class Source
 
     public string Description { get; set; } = null!;
 
-    public string update { get; set; } = null!;
+    public DateTime update { get; set; }
 }
