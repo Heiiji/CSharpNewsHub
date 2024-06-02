@@ -1,13 +1,19 @@
 using NewsStoreApi.Models;
+using SourcesStoreApi.Models;
+
 using NewsStoreApi.Services;
+using SourcesStoreApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.Configure<NewsStoreDatabaseSettings>(
     builder.Configuration.GetSection("NewsStoreDatabase"));
+builder.Services.Configure<SourcesStoreDatabaseSettings>(
+    builder.Configuration.GetSection("SourcesStoreDatabase"));
 
 builder.Services.AddSingleton<NewsService>();
+builder.Services.AddSingleton<SourcesService>();
 
 builder.Services.AddControllers().AddJsonOptions(
             options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
