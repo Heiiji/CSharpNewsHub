@@ -1,8 +1,12 @@
+using Quartz;
+using Quartz.Impl;
+
 using NewsStoreApi.Models;
 using SourcesStoreApi.Models;
 
 using NewsStoreApi.Services;
 using SourcesStoreApi.Services;
+using Quartz.Simpl;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +21,24 @@ builder.Services.AddSingleton<SourcesService>();
 
 builder.Services.AddControllers().AddJsonOptions(
             options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
+
+// Configuration de Quartz
+builder.Services.AddQuartz(q => {
+    q.UseJobFactory<MicrosoftDependencyInjectionJobFactory>();
+
+    var jobKey = new JobKey("Crawl", "MyGroup");
+    q.AddJob<Crawl>(opts => opts.WithIdentity(jobKey));
+
+    // Créer le trigger pour lancer le job regulierement
+    q.AddTrigger(opts => opts
+        .ForJob(jobKey) // Lier à la description du job
+        .WithIdentity("CrawlTrigger", "MyGroup")
+        .WithCronSchedule("0/10 * * ? * * *") // Excecute toute les heures
+    );
+});
+
+builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
